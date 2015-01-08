@@ -23,7 +23,6 @@ import re
 import subprocess
 import collections
 import socket
-import construct
 
 import docopt
 
@@ -125,7 +124,7 @@ def bitmask32(width):
 
 
 def netmask(width):
-    return socket.inet_ntoa(construct.UBInt32(None).build((-1 << width) & 0xFFFFFFFF))
+    return socket.inet_ntoa(struct.pack(">I", ((-1) << (32 - width)) & 0xFFFFFFFF))
 
 
 def parse_ip(masked_addr):
