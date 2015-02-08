@@ -23,6 +23,7 @@ import re
 import subprocess
 import collections
 import socket
+import struct
 
 import docopt
 
